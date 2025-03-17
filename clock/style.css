@@ -54,6 +54,7 @@ body {
     width: 50vh;
     max-height: 500px;
     max-width: 500px;
+    overflow: hidden;
   
 }
 
@@ -118,6 +119,7 @@ body {
 .timer {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -127,7 +129,6 @@ body {
     width: 100%;
     height: 80%;
 }
-
 
 
 .wrapper{
@@ -186,7 +187,6 @@ body {
 }
 
 .circle .buttons-container{
-    display: 1px solid red;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -194,12 +194,12 @@ body {
 }
 
 .timer-start {
+
     position: absolute;
-    width: fit-content;
+    white-space: nowrap;
     top: 50%;
     left:50%;
     transform: translate(-50%,-50%);  
-    font-size: 1.5rem;
 }
 
 @keyframes border-decrease {

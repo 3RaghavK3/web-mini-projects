@@ -3,10 +3,7 @@ const stopwatch=document.getElementById("sw");
 const timer=document.getElementById("ti")
 const slides=document.getElementById("slides")
 const itemscount=document.querySelectorAll(".slides>div").length
-const start=document.getElementById("start");
-const playbutton=document.getElementById("playbutton");
-const endbutton=document.getElementById("endbutton");
-const circle=document.getElementById("circle")
+
 
 
 document.documentElement.style.setProperty("--itemscount", itemscount);
@@ -25,26 +22,34 @@ buttons.forEach((button, index) => {
 
 setInterval(() => {
     let date=new Date();
-    let hour=(date.getHours()%12).toString().padStart(2,"0");
+    let hour=date.getHours();
     let minute=date.getMinutes().toString().padStart(2,"0");
     let second=date.getSeconds().toString().padStart(2,"0");
     let ampm;
-    if(hour>12){
-        ampm="AM";
+    if(hour>=12){
+        ampm="PM";
     }
     else{
-         ampm="PM";
+         ampm="AM";
     }
+    hour = hour % 12 || 12;
     
-    clock.innerText=`${hour}:${minute}:${second}${ampm}`;
+    clock.innerText=`${hour.toString().padStart(2,"0")}:${minute}:${second}${ampm}`;
     
 },1000);
 
 
-let swhr=0;
-let swmi=0;
-let swsc=0;
-start.innerText=`${swhr.toString().padStart(2,"0")}:${swmi.toString().padStart(2,"0")}:${swsc.toString().padStart(2,"0")}`
+const start=document.getElementById("start");
+const playbutton=document.getElementById("playbutton");
+const endbutton=document.getElementById("endbutton");
+const circle=document.getElementById("circle")
+
+let swhr=0,swmi=0,swsc=0;
+const updateStopwatch = () => {
+    start.innerText = `${swhr.toString().padStart(2, "0")}:${swmi.toString().padStart(2, "0")}:${swsc.toString().padStart(2, "0")}`;
+};
+
+updateStopwatch();
 playbutton.addEventListener("click",()=>{
     playbutton.classList.toggle("play");
     playbutton.classList.toggle("pause");
@@ -60,8 +65,7 @@ playbutton.addEventListener("click",()=>{
                 swhr++;
                 swmi%=60;
             }
-            start.innerText=`${swhr.toString().padStart(2,"0")}:${swmi.toString().padStart(2,"0")}:${swsc.toString().padStart(2,"0")}`
-
+            updateStopwatch();
         },1000);
     }
     if(playbutton.classList.contains("play")){
@@ -75,8 +79,8 @@ playbutton.addEventListener("click",()=>{
         swhr=0;
         swmi=0;
         swsc=0;
-        start.innerText=`${swhr.toString().padStart(2,"0")}:${swmi.toString().padStart(2,"0")}:${swsc.toString().padStart(2,"0")}`
-    })
+        updateStopwatch();
+        })
 })
 
 
@@ -104,7 +108,6 @@ function populate(){
     for(let i=0;i<=23;i++){
         let x=document.createElement("div");
         x.classList.add("item");
-        
         x.innerText=i.toString().padStart(2,"0");
         hourcol.appendChild(x);
     }
@@ -129,9 +132,7 @@ function start_timer(){
         button.style.visibility="visible";
     })
     startcountdown=setInterval(() => {
-        let hrs=parseInt(timerstart.textContent.slice(0,2));
-        let mins=parseInt(timerstart.textContent.slice(3,5));
-        let sc=parseInt(timerstart.textContent.slice(6));
+        let [hrs,mins,sc]=timerstart.textContent.split(":").map(x=>parseInt(x));
 
         if(hrs==0 && mins==0 && sc==0){
             clearInterval(startcountdown);
@@ -169,12 +170,10 @@ timerbutton.addEventListener("click",()=>{
     p_sbuttons[0].classList.remove("play");
     clearInterval(startcountdown)
     start_timer();
-    slides.style.transform=`translateX(-${100/itemscount * (itemscount-1)}%)`
+    slides.style.transform=`translateX(-${100/itemscount * 3}%)`
     timerstart.textContent=timervalue;
-    let hrs=parseInt(timerstart.textContent.slice(0,2));
-    let mins=parseInt(timerstart.textContent.slice(3,5));
-    let sc=parseInt(timerstart.textContent.slice(6));
 
+    let [hrs,mins,sc]=timerstart.textContent.split(":").map(x=>parseInt(x));
     let timerforborder=(sc)+(mins*60)+(hrs*3600);
 
     document.documentElement.style.setProperty("--timerforborder",timerforborder);
@@ -212,7 +211,6 @@ p_sbuttons[1].addEventListener("click",()=>{
 
 
 let timervalue="00:00:00";
-console.log(timervalue);
 document.addEventListener("DOMContentLoaded",()=>{
     wrappers.forEach((wrapper,index)=>{
         wrapper.addEventListener("scroll",()=>{
