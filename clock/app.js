@@ -4,11 +4,12 @@ const timer=document.getElementById("ti")
 const slides=document.getElementById("slides")
 const itemscount=document.querySelectorAll(".slides>div").length
 const start=document.getElementById("start");
-const play=document.getElementById("button");
+const playbutton=document.getElementById("playbutton");
+const endbutton=document.getElementById("endbutton");
+const circle=document.getElementById("circle")
 
 
 document.documentElement.style.setProperty("--itemscount", itemscount);
-
 const buttons=document.querySelectorAll(".navbar img")
 
 let active_button_index=0;
@@ -40,17 +41,15 @@ setInterval(() => {
 },1000);
 
 
-
-
 let swhr=0;
 let swmi=0;
 let swsc=0;
 start.innerText=`${swhr.toString().padStart(2,"0")}:${swmi.toString().padStart(2,"0")}:${swsc.toString().padStart(2,"0")}`
-play.addEventListener("click",()=>{
-    play.classList.toggle("play");
-    play.classList.toggle("end");
+playbutton.addEventListener("click",()=>{
+    playbutton.classList.toggle("play");
+    playbutton.classList.toggle("pause");
 
-    if (play.classList.contains("end")){
+    if (playbutton.classList.contains("pause")){
         run=setInterval(() => {
             swsc++;
             if(swsc==60){
@@ -65,20 +64,27 @@ play.addEventListener("click",()=>{
 
         },1000);
     }
-    else{
+    if(playbutton.classList.contains("play")){
         clearInterval(run);
+    }
+
+    endbutton.addEventListener("click",()=>{
+        clearInterval(run);
+        playbutton.classList.add("play");
+        playbutton.classList.remove("pause");
         swhr=0;
         swmi=0;
         swsc=0;
         start.innerText=`${swhr.toString().padStart(2,"0")}:${swmi.toString().padStart(2,"0")}:${swsc.toString().padStart(2,"0")}`
-    }
+    })
 })
+
+
 
 
 const hourcol=document.getElementById("hc");
 const minutecol=document.getElementById("mc");
 const secondcol=document.getElementById("sc");
-
 const wrappers=document.querySelectorAll(".wrapper");
 
 
@@ -116,18 +122,28 @@ function populate(){
 
 populate();
 
-const timerbutton=document.getElementById("timerbt");
-timerbutton.addEventListener("click",()=>{
-    slides.style.transform=`translateX(-${100/itemscount * (itemscount-1)}%)`
-    const timerstart=document.getElementById("timer-start");
-    timerstart.textContent=timervalue;
+const timerstart=document.getElementById("timer-start");
 
+function start_timer(){
+    p_sbuttons.forEach((button)=>{
+        button.style.visibility="visible";
+    })
     startcountdown=setInterval(() => {
         let hrs=parseInt(timerstart.textContent.slice(0,2));
         let mins=parseInt(timerstart.textContent.slice(3,5));
         let sc=parseInt(timerstart.textContent.slice(6));
-        
+
+        if(hrs==0 && mins==0 && sc==0){
+            clearInterval(startcountdown);
+            timerstart.textContent="Time-up";
+            p_sbuttons.forEach((button)=>{
+                button.style.visibility="hidden";
+            })
+            return;
+        }
+
         sc--;
+
 
         if(sc<0){
             sc=59;
@@ -137,18 +153,62 @@ timerbutton.addEventListener("click",()=>{
             mins=59;
             hrs--;
         }
-        if(hrs==0 && mins==0 && sc==0){
-            clearInterval(startcountdown);
-            return;
-        }
+        
 
         timerstart.textContent = 
             `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${sc.toString().padStart(2, '0')}`;
         
     }, 1000);
+}
+
+const timerbutton=document.getElementById("timerbt");
+
+let startcountdown;
+timerbutton.addEventListener("click",()=>{
+    p_sbuttons[0].classList.add("pause")
+    p_sbuttons[0].classList.remove("play");
+    clearInterval(startcountdown)
+    start_timer();
+    slides.style.transform=`translateX(-${100/itemscount * (itemscount-1)}%)`
+    timerstart.textContent=timervalue;
+    let hrs=parseInt(timerstart.textContent.slice(0,2));
+    let mins=parseInt(timerstart.textContent.slice(3,5));
+    let sc=parseInt(timerstart.textContent.slice(6));
+
+    let timerforborder=(sc)+(mins*60)+(hrs*3600);
+
+    document.documentElement.style.setProperty("--timerforborder",timerforborder);
+    circle.style.border=`10px solid white`;
+    circle.style.animation = "none";
+    void circle.offsetWidth;
+    circle.style.animation=`border-decrease calc(var(--timerforborder)*1s) linear forwards`;
+
+
 })
 
+const p_sbuttons=document.querySelectorAll(".timer-display .buttons-container div");
+p_sbuttons[0].addEventListener("click",()=>{
+    p_sbuttons[0].classList.toggle("pause");
+    p_sbuttons[0].classList.toggle("play");
 
+    if(p_sbuttons[0].classList.contains("play")){
+        clearInterval(startcountdown);
+        circle.style.animationPlayState="paused";
+    }
+    if(p_sbuttons[0].classList.contains("pause")){
+        start_timer();
+        circle.style.animationPlayState="running";
+    }
+
+});
+
+
+p_sbuttons[1].addEventListener("click",()=>{
+    clearInterval(startcountdown);
+    timerstart.textContent=`00:00:00`;
+    slides.style.transform=`translateX(-${100/itemscount * 2}%)`;
+    
+});
 
 
 let timervalue="00:00:00";
