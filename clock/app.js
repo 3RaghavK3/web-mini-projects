@@ -224,7 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
             let x = rect.left + rect.width / 2;
             let y = rect.top + rect.height / 2;
             
-            let value = document.elementFromPoint(x, y).textContent;
+            let targetItem = document.elementFromPoint(x, y);
+
+            if (targetItem && targetItem.classList.contains("item")) {
+                let value = targetItem.textContent.trim();
                 if (index === 0) {
                     timervalue = value + timervalue.slice(2);
                 } else if (index === 1) {
@@ -232,6 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     timervalue = timervalue.slice(0, 6) + value;
                 }
+
+                console.log(timervalue);
+            }
         });
     });
 });
