@@ -205,10 +205,7 @@ p_sbuttons[1].addEventListener("click",()=>{
 });
 
 
-
-
 let timervalue = "13:31:31";
-
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".wrapper").forEach((wrapper, index) => {
         let items = [...wrapper.querySelectorAll(".item")];
