@@ -2,9 +2,10 @@
 * {
     padding: 0;
     margin: 0;
+    white-space: nowrap;
     box-sizing: border-box;
     font-family: "Source Code Pro";
-    font-size: min(2rem,10vw);
+    font-size: 1.75rem;
     color: white;
 }
 
@@ -75,6 +76,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .stopwatch {
     display: flex;
@@ -128,6 +130,7 @@ body {
     display: flex;
     width: 100%;
     height: 80%;
+    
 }
 
 

@@ -92,38 +92,33 @@ const secondcol=document.getElementById("sc");
 const wrappers=document.querySelectorAll(".wrapper");
 
 
+const containerHeight = document.getElementById("timercontainer").clientHeight;
 
-function populate(){
-    for(let i=0;i<1;i++){
-        let x=document.createElement("div");
-        x.classList.add("item");
-        hourcol.appendChild(x);
-        y=x.cloneNode(true);
-        minutecol.appendChild(y);
-        z=y.cloneNode(true);
-        secondcol.appendChild(z);
-    }
+function populate() {
     
-    
-    for(let i=0;i<=23;i++){
-        let x=document.createElement("div");
+   
+    for (let i = 0; i <= 23; i++) {
+        let x = document.createElement("div");
         x.classList.add("item");
-        x.innerText=i.toString().padStart(2,"0");
+        x.innerText = i.toString().padStart(2, "0");
         hourcol.appendChild(x);
     }
-    
-    
-    for(let i=0;i<=59;i++){
-        let x=document.createElement("div");
+
+    for (let i = 0; i <= 59; i++) {
+        let x = document.createElement("div");
         x.classList.add("item");
-        x.innerText=i.toString().padStart(2,"0");
+        x.innerText = i.toString().padStart(2, "0");
         minutecol.appendChild(x);
-        y=x.cloneNode(true);
+        let y = x.cloneNode(true);
         secondcol.appendChild(y);
     }
+
 }
 
 populate();
+populate();
+populate();
+
 
 const timerstart=document.getElementById("timer-start");
 
@@ -210,21 +205,36 @@ p_sbuttons[1].addEventListener("click",()=>{
 });
 
 
-let timervalue="00:00:00";
-document.addEventListener("DOMContentLoaded",()=>{
-    wrappers.forEach((wrapper,index)=>{
-        wrapper.addEventListener("scroll",()=>{
-            let rect=wrapper.getBoundingClientRect();
-            let x=rect.left+rect.width/2;
-            let y=rect.top+rect.height/2;
-            let value=document.elementFromPoint(x,y).textContent;
-            if(index===0) timervalue=`${value}${timervalue.slice(2)}`
-            else if(index===1) timervalue=`${timervalue.slice(0,3)}${value}${timervalue.slice(5)}`;
-            else timervalue=`${timervalue.slice(0,6)}${value}`;
-            console.log(timervalue);
+
+
+let timervalue = "13:31:31";
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".wrapper").forEach((wrapper, index) => {
+        let items = [...wrapper.querySelectorAll(".item")];
+        if (items.length === 0) return; 
+        let firstItemHeight = items[0].clientHeight;
+
+        setTimeout(() => {
+            wrapper.scrollTop = firstItemHeight * Math.floor(items.length / 2);
+        }, 0);
+
+        wrapper.addEventListener("scroll", () => {
+            let rect = wrapper.getBoundingClientRect();
+            let x = rect.left + rect.width / 2;
+            let y = rect.top + rect.height / 2;
+            
+            let value = document.elementFromPoint(x, y).textContent;
+                if (index === 0) {
+                    timervalue = value + timervalue.slice(2);
+                } else if (index === 1) {
+                    timervalue = timervalue.slice(0, 3) + value + timervalue.slice(5);
+                } else {
+                    timervalue = timervalue.slice(0, 6) + value;
+                }
+
+                console.log(timervalue);
+            
         });
     });
 });
-
-
-
