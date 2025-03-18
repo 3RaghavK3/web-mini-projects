@@ -232,9 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     timervalue = timervalue.slice(0, 6) + value;
                 }
-
-                console.log(timervalue);
-            
         });
     });
 });
