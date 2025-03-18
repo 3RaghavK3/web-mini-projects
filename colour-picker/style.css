@@ -1,0 +1,57 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Source Code Pro", monospace;
+
+}
+
+.body{
+    position: relative;
+}
+
+
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid red;
+    height: 40vw;
+    width: 30vw;
+
+}
+input[type="color"]{
+    height: 25vw;
+    width: 25vw;
+}
+
+
+.fiveshades{
+    height: 5vw;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly
+}
+.fiveshades div{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+@media (max-width:1024px){
+    .container{
+        height: 50vw;
+        width: 40vw;
+    }
+}
+@media (max-width:768px){
+    .container{
+        height: 75vw;
+        width: 50vw;
+    }
+}
