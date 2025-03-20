@@ -54,8 +54,10 @@ options.forEach((mood)=>{
         if (selecteddate===null || selecteddate.innerText==="" ) window.alert("Click a date");
         else{
             if (selecteddate.children.length===1){
+                
                 selecteddate.removeChild(selecteddate.children[0]);
             }
+            
             
 
             let datekey=`${year}-${monthindex+1}-${selecteddate.innerText}`;

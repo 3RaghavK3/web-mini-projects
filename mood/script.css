@@ -49,7 +49,7 @@ body{
     cursor: pointer;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    
 }
 .calender-container{
     display: flex;
@@ -80,7 +80,7 @@ body{
     align-items: center;
     cursor: pointer;
     font-size: 1.25rem;
-    transition: transform 0.75s ease-in-out;
+    transition: transform 0.25s ease-in-out;
 }
 
 .options div:hover{
@@ -107,7 +107,6 @@ body{
     grid-template-rows: repeat(6,1fr);
     height: 90%;
     width: 100%;
-    
 
 } 
 
@@ -130,30 +129,49 @@ body{
     background-color: bisque;
 }
 
-@media (max-width:1024px){
-    .calender-container{
-        display:block;
+@media (max-width: 1024px) {
+    .calender-container {
+        display: flex;
+        flex-direction: column;
     }
 
-    .calender{
+    .calender {
         width: 100%;
         height: 85%;
-    
     }
-    
-    .options{
+
+    .options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
         width: 100%;
-        height: 15%;
+        height: auto;
+        padding: 5px;
+
     }
 
-    .heading{
-        height: 3%;
-    }
-    .heading-display{
-        width: 40%;
+    .options div {
+        width: 100%;
+        height: 100%;
+        font-size: 0; 
     }
 
+    .options div img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .options div:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem; 
+    }
 }
+
+
 @media (max-width:768px){
     .heading-display{
         width: 65%;
