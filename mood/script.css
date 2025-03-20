@@ -1,0 +1,163 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Source Code Pro";
+    font-size: 1rem;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 90%;
+    width: 90%;
+   
+}
+
+.heading{
+    height: 5%;
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-display{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    height: 100%;
+  
+}
+
+
+.button{
+    height: 100%;
+    display: flex;
+    width: fit-content;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.calender-container{
+    display: flex;
+    height: 95%;
+    width: 100%;
+    border: 1px solid black;
+    
+}
+
+.calender{
+    width: 85%;
+    height: 100%;
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.options div{
+    background-color: white;
+    border: 1px solid black;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: transform 0.75s ease-in-out;
+}
+
+.options div:hover{
+    transform: scale(1.05);
+    border: 1px solid black;
+}
+.options div img{
+    height: 75%;
+    border-radius: 50%;
+   
+}
+
+.calender .heading{
+    height: 5%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    border: 1px solid black;
+} 
+
+ .display{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(6,1fr);
+    height: 90%;
+    width: 100%;
+    
+
+} 
+
+
+.card{
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    cursor: grab;
+}
+
+.active {
+    font-size: 1.75rem;
+}
+
+.today{
+    background-color: bisque;
+}
+
+@media (max-width:1024px){
+    .calender-container{
+        display:block;
+    }
+
+    .calender{
+        width: 100%;
+        height: 85%;
+    
+    }
+    
+    .options{
+        width: 100%;
+        height: 15%;
+    }
+
+    .heading{
+        height: 3%;
+    }
+    .heading-display{
+        width: 40%;
+    }
+
+}
+@media (max-width:768px){
+    .heading-display{
+        width: 65%;
+    }
+}
+
+
