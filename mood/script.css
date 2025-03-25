@@ -122,7 +122,14 @@ body{
 }
 
 .active {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
+
+}
+
+.card img{
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
 }
 
 .today{

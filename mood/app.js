@@ -46,28 +46,38 @@ function saveemojis(){
 }
 
 
-let options=[...document.querySelectorAll(".options div")];
-options.forEach((mood)=>{
-    mood.addEventListener("click",()=>{
-        let moodicon = mood.querySelector("img").cloneNode(true);
-        let selecteddate=display.querySelector(".active");
-        if (selecteddate===null || selecteddate.innerText==="" ) window.alert("Click a date");
-        else{
-            if (selecteddate.children.length===1){
-                
-                selecteddate.removeChild(selecteddate.children[0]);
-            }
-            
-            
+let options = [...document.querySelectorAll(".options div")];
 
-            let datekey=`${year}-${monthindex+1}-${selecteddate.innerText}`;
-            emojistorage[datekey]=moodicon.src;
-            saveemojis();
-            selecteddate.appendChild(moodicon);
+options.forEach((mood, index) => { 
+    mood.addEventListener("click", () => {
+        let selecteddate = display.querySelector(".active");
+        if (!selecteddate || selecteddate.innerText === "") {
+            window.alert("Click a date");
+            return;
         }
-    })
 
-})
+        let datekey = `${year}-${monthindex + 1}-${selecteddate.innerText}`;
+
+       
+        if (index === options.length - 1) {
+            selecteddate.removeChild(selecteddate.querySelector("img"));
+            delete emojistorage[datekey]; 
+            saveemojis();
+            return;
+        }
+
+        let moodicon = mood.querySelector("img").cloneNode(true);
+
+        if (selecteddate.children.length === 1) {
+            selecteddate.removeChild(selecteddate.children[0]);
+        }
+
+        emojistorage[datekey] = moodicon.src;
+        saveemojis();
+        selecteddate.appendChild(moodicon);
+    });
+});
+
 
 
 
