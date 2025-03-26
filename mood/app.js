@@ -58,7 +58,6 @@ options.forEach((mood, index) => {
 
         let datekey = `${year}-${monthindex + 1}-${selecteddate.innerText}`;
 
-       
         if (index === options.length - 1) {
             selecteddate.removeChild(selecteddate.querySelector("img"));
             delete emojistorage[datekey]; 
