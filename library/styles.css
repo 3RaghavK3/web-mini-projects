@@ -1,0 +1,219 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+
+
+}
+
+
+body{
+    background-color: rgb(250, 215, 215);
+    background-image: url("assets/bg.jpg");
+    background-repeat: no-repeat;
+   
+}
+
+
+.heading,.footer{
+    position: relative;
+    width: 100vw;
+    z-index: 1;
+    background-color: rgba(39, 39, 48, 0.897);
+}
+
+.alfa-slab-one-regular ,.alfa-slab-one-small{
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+  }
+
+
+  .alfa-slab-one-small{
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+
+  }
+  
+
+.title{
+    position: absolute;
+    left: 0;
+    height: fit-content ;
+    border: 1px solid red;
+    width: fit-content;
+}
+
+
+.heading{
+    height: 15vh;
+}
+.heading .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.searchbar,.filter,.toggleview{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.35);
+    
+}
+.searchbar{
+    position: relative;
+    height: 100%;
+    width: 75%;
+}
+
+
+.searchbar .inputtype{
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0);
+    width: 80%;
+    height: 100%;
+    border: none;
+    color: white;
+}
+
+.inputtype:focus{
+    border: none;
+    outline: none;
+}
+.filter,.toggleview{
+    background-repeat: no-repeat;
+    background-position: center center;
+    width:7.5%;
+}
+
+.filter{
+    background-image: url(assets/1608702_filter_icon.svg);
+}
+
+.toggleview{
+    background-image: url(assets/2849812_menu_multimedia_bars_media_icon.svg);
+   
+}
+
+.searchbar img{
+    position: absolute;
+    right:0;
+}
+
+
+.bookspace{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 25px;
+    height:80vh;
+    width: 100vw;
+
+}
+
+.book{
+    display: flex;
+    background-color: rgba(179, 139, 94, 0.5);
+    
+    
+}
+
+.footer{
+    position: relative;
+    height: 5vh;
+    width: 100vw;
+    
+}
+
+.pagecontainer{
+    
+    position:absolute;
+    display: flex;
+    gap: 20px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    background-color: rgba(0, 0, 0, 0.35);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:fit-content;
+    max-width: 20%;
+    height: 100%;
+}
+
+
+.pagecontainer::-webkit-scrollbar {
+    height: 5px; 
+  
+}
+
+.pagecontainer::-webkit-scrollbar-thumb {
+    background-color:red;
+}
+
+.page{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 30px;
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    background-color: #f1933a;
+    color:white;
+
+}
+
+
+.thumbnail{
+    background-repeat: no-repeat;
+    background-size: contain;
+    height:100%;
+    width: 40%;
+}
+
+.infodiv{
+    font-size:1rem;
+    color: white;
+    font-weight: 500;
+    word-wrap: break-word;
+    height: 100%;
+    width: 60%;
+
+  
+}
+
+
+@media (min-width:2000px){
+    .infodiv{
+        font-size:2rem;
+    }
+}
+
+
+
+@media  (max-width:1440px){
+    .infodiv{
+        font-size:1rem;
+    }
+}
+
+@media  (max-width:1024px){
+    .infodiv{
+        font-size:0.75rem;
+    }
+}
+
+//dont worry about tablet they need different config
