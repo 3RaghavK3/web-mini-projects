@@ -3,23 +3,25 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Jost", sans-serif;
-
-
+    
+    
 }
 
+ html{
+    max-width: 100vw;
+    overflow-x: hidden;
+} 
 
 body{
-    background-color: rgb(250, 215, 215);
-    background-image: url("assets/bg.jpg");
+    background-color: rgba(241, 204, 147, 0.726);
     background-repeat: no-repeat;
-   
+    overflow-x: hidden;
 }
 
 
 .heading,.footer{
     position: relative;
-    width: 100vw;
-    z-index: 1;
+    max-width: 100vw;
     background-color: rgba(39, 39, 48, 0.897);
 }
 
@@ -27,7 +29,7 @@ body{
     font-family: "Alfa Slab One", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 3rem;
+    
   }
 
 
@@ -43,9 +45,7 @@ body{
 .title{
     position: absolute;
     left: 0;
-    height: fit-content ;
-    border: 1px solid red;
-    width: fit-content;
+
 }
 
 
@@ -56,15 +56,15 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     transform: translateY(-50%) translateX(-50%);
     display: flex;
     justify-content: center;
     gap: 30px;
 }
 
-.searchbar,.filter,.toggleview{
+.searchbar,.sort,.toggleview-grid,.toggleview-list{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.35);
     
@@ -77,59 +77,89 @@ body{
 
 
 .searchbar .inputtype{
-    font-size: 1.5rem;
+    position: absolute;
     background-color: rgba(0, 0, 0, 0);
     width: 80%;
     height: 100%;
     border: none;
     color: white;
+
 }
 
 .inputtype:focus{
     border: none;
     outline: none;
 }
-.filter,.toggleview{
+
+
+.sort,.toggleview-grid,.toggleview-list{
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    width:7.5%;
+    width:10%;
 }
 
-.filter{
+.sort{
     background-image: url(assets/1608702_filter_icon.svg);
+
+    outline: none;
+    border: none;
 }
 
-.toggleview{
-    background-image: url(assets/2849812_menu_multimedia_bars_media_icon.svg);
+.toggleview-grid{
+    background-image: url(assets/186402_grid_icon.svg);
    
+}
+.toggleview-list{
+    background-image:url(assets/2849812_menu_multimedia_bars_media_icon.svg);
 }
 
 .searchbar img{
     position: absolute;
+    height: 100%;
     right:0;
 }
 
 
-.bookspace{
+.bookspace-grid{
+    position: relative;
     padding: 15px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3,1fr);
     gap: 25px;
-    height:80vh;
     width: 100vw;
 
 }
 
-.book{
+.bookspace-list{
+   
     display: flex;
-    background-color: rgba(179, 139, 94, 0.5);
-    
+    flex-direction: column;
+    padding: 30px;
+
+}
+
+.thumbnail{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40%;
+ 
+}
+
+.grid{
+    display: flex;
+    padding-left: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
     
 }
 
 .footer{
-    position: relative;
+    position: fixed;
+    bottom:0;
     height: 5vh;
     width: 100vw;
     
@@ -177,28 +207,31 @@ body{
 }
 
 
-.thumbnail{
-    background-repeat: no-repeat;
-    background-size: contain;
-    height:100%;
-    width: 40%;
-}
+    .infodiv{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size:1rem;
+        color: white;
+        font-weight: 500;
+        height: 100%;
+        width: 60%;
 
-.infodiv{
-    font-size:1rem;
-    color: white;
-    font-weight: 500;
-    word-wrap: break-word;
-    height: 100%;
-    width: 60%;
-
-  
-}
+    
+    }
 
 
 @media (min-width:2000px){
     .infodiv{
         font-size:2rem;
+    }
+    .alfa-slab-one-regular{
+        font-size:6rem;
+    }
+    .alfa-slab-one-small{
+        font-size:5rem;
     }
 }
 
@@ -208,12 +241,91 @@ body{
     .infodiv{
         font-size:1rem;
     }
+    .alfa-slab-one-regular{
+        font-size:3rem;
+    }
+    .alfa-slab-one-small{
+        font-size:2rem;
+    }
+    
 }
 
 @media  (max-width:1024px){
     .infodiv{
         font-size:0.75rem;
     }
+    .alfa-slab-one-regular{
+        font-size:3rem;
+    }
+    .alfa-slab-one-small{
+        font-size:1.5rem;
+    }
+    .heading{
+        height: 11vw;
+    }
+    
+    .heading .container{
+        width: 50%;
+    }
+    
 }
 
-//dont worry about tablet they need different config
+
+@media  (max-width:767px){
+    .infodiv{
+        font-size:0.75rem;
+    }
+    .alfa-slab-one-regular{
+        font-size:3rem;
+    }
+    .alfa-slab-one-small{
+        font-size:1.25rem;
+    }
+    .heading{
+        height: 12vw;
+    }
+    
+    .heading .container{
+        width: 40%;
+    }
+}
+
+
+@media  (max-width:425px){
+    .infodiv{
+        font-size:0.75rem;
+    }
+    .alfa-slab-one-regular{
+        font-size:1.25rem;
+    }
+    .alfa-slab-one-small{
+        font-size:1rem;
+    }
+    .heading{
+        height: 12vw;
+    }
+    
+    .heading .container{
+        transform: translate(-37.5%,-50%);
+        width: 65%;
+        gap: 20px;
+        
+}
+    .thumbnail{
+        height: 250px;
+        width: 100%;
+    }
+
+    .grid{
+        flex-direction: column;
+        max-width: 100%; 
+        padding:0;
+        
+    }
+
+    .infodiv{
+        width: 100%;
+    
+    }
+
+}
