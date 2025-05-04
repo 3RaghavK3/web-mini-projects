@@ -222,8 +222,7 @@ html,body{
     }
 
     .card-container{
-        border: 10px solid violet;
-        margin-bottom: 2vw;
+       
         display: flex;
         flex-direction: column;
         gap: 2vw;
