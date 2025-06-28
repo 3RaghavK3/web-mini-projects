@@ -1,0 +1,323 @@
+*{
+    background-color: #FFFFFA;
+    font-family: "Comfortaa", sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 1vw;
+}
+
+html,body{
+    padding: 0.5vw;
+}
+
+
+.title{
+    width: 100vw;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 3.5vw;
+    
+}
+
+
+.card-stats-container{
+    /* border: 10px solid green; */
+    display: flex;
+    flex-direction: row;
+    flex:1;
+}
+
+.card-container{
+    /* border: 10px solid violet; */
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding-left: 25px;
+    padding-right: 25px;
+
+}
+
+.stats-container{
+    /* border: 10px solid blue; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    
+}
+
+.card-items{
+    
+    position: relative;
+    flex:1;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 90%;
+    overflow-y: auto;
+    
+}
+
+
+
+.card-items:nth-child(3n+1){
+    background-color: #CFC2FF;
+}
+
+.card-items:nth-child(3n+2){
+    background-color: #FFC4BD;
+}
+
+.card-items:nth-child(3n+3){
+    background-color: #FFE2A8;
+}
+
+
+
+.stats-items{
+    flex:1;
+    border: 1px solid black;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+
+.stats-items .card-name{
+    height: 30%;
+}
+
+.stat-count{
+    display: flex;
+    font-size: 5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+}
+
+
+
+
+.card-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-align: center;
+   
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.238);
+}
+
+.stats-items .card-name{
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+.add-task-container {
+    display: flex;
+    justify-content: space-evenly;        
+    width: 100%;
+    height: 10%;
+    background-color: #fdfdfd00;
+    padding: 10px;
+    z-index: 10;       
+}
+
+.input{
+    padding-left: 20px;
+    flex: 1.5;
+    border: 1px solid black;
+    background-color:white;
+    color: black;
+    border-radius: 50px;
+}
+
+.add-task-btn{
+    flex: 1;
+    cursor: pointer;
+    width:fit-content;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid black;
+    background-color: #B0EC9C;
+    transition: transform 0.1s ease-in-out;
+ 
+
+}
+
+.add-task-btn:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 0px 0px black;
+}
+
+
+.task-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    word-break:break-all;
+    background-color: #0000001e;
+    cursor:grab;
+}
+
+
+.del,.edit{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+
+.del{
+    height: 25px;
+    width: 25px;
+    right: 5%;
+    background-color: #00000000;
+    background-image: url(assets/7518699_dustbin_bin_trush_icon\ \(2\).svg);
+}
+
+.edit{
+    right: 15%;
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+    background-color: #00000000;
+    background-image: url(assets/8666681_edit_icon.svg)
+      
+}
+
+
+/* tablets */
+
+@media (max-width:1000px){
+    .card-stats-container{
+        flex-direction: column-reverse;
+       
+    }
+    *{
+        font-size: 2vw;
+    }
+    .stats-container{
+        
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        gap: 30px;
+        
+    }
+
+    .card-container{
+       
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        width: 100%;
+        
+    
+    }
+    .card-items{
+        width: 100%;
+    }
+
+    .add-task-container {
+        height: 15%;
+    }
+    
+}
+
+/* big phones */
+@media (max-width:600px){
+    *{
+        font-size: 2.5vw;
+    }
+    .stats-container{
+        
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        gap: 30px;
+        
+    }
+
+    .card-container{
+        border: 10px solid violet;
+        margin-bottom: 2vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        width: 100%;
+        
+    
+    }
+    .card-items{
+        width: 100%;
+    }
+
+    .add-task-container {
+        height: 25%;
+    }
+    
+    .task-card {
+       height: 20%;
+    }
+    .del{
+        height: 20px;
+        width: 20px;
+    }
+    .edit{
+        height: 15px;
+        width: 15px;
+    }
+    .stats-items{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+      
+    }
+
+    .stats-items .card-name{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+}
+
+}
+
+/* medium phones */
+@media (max-width:420px){
+
+    *{
+        font-size: 3vw;
+    }
+    .stats-items{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+      
+    }
+
+    .stats-items .card-name{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+}   
+.add-task-container {
+    height: 20%;
+}
+.task-card {
+    height: 15%;
+    
+ }
+
+}

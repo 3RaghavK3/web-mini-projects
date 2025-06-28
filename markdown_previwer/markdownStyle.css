@@ -1,0 +1,29 @@
+ code {
+      background-color: #475569;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+   
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid grey;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+     ul {
+      margin-left: 20px;
+    }
+
+    a{
+      color: rgb(16, 189, 227);
+    }
+    

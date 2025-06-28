@@ -1,0 +1,103 @@
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('../asset/Sprinkle\ \(1\).svg');
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.label {
+  width: 300px;
+  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  padding: 15px 8px 15px 10px;
+  text-align: left;
+  box-shadow:
+    20px 20px 60px #3853c7,
+    -20px -20px 60px #19ad88;
+    
+
+    /* depth from top =32px+20(input height)=52px */
+}
+
+.label-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    background-color: #1E1E1E;
+    background-image: none;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    z-index: 1;
+
+    /* depth from top = 62px */
+}
+
+
+.search_bar {
+ 
+  border: none;
+  outline: none;
+  box-shadow: none;
+   background: transparent; 
+   color: #D9D9D9;
+  font-size: 16px;
+  width: 80%;
+}
+
+
+.cards-grid-container{
+    display: grid;
+    position:relative;
+    top: 72px;
+    padding: 50px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    width: 100%;
+    gap: 50px;
+}
+
+
+.thumbnail{
+   background-size:cover;
+   background-repeat: no-repeat;
+   height: 75%;
+}
+
+.title-text{
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.channel-text{
+  color: rgb(185, 194, 194);
+}
+.grid-card{
+    border: 5px solid white;
+    color: white;
+    min-height: 300px;
+    box-shadow: 10px 10px 0px 0px #1E4E4B,
+    15px 15px #2D4781;
+    cursor: pointer;
+    
+}
+
+
+.not-found{
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 64px;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #1E4E4B,white, #2D4781);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}

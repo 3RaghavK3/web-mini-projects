@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Down Previwer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="markdownStyle.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="alert" id="alert">
+        <div class="message" id="message"></div>
+        <div class="buttons">
+            <div class="optionbtn">No</div>
+            <div class="optionbtn">Yes</div>
+        
+        </div>
+    </div>
+    
+    <div class="header" id="header">
+        &lt;Markdown Edtior&gt;
+    </div>
+    <div class="main-container" id="main-container">
+      
+    <div class="editor-container">
+        <textarea placeholder="Start typing..." id="editor">
+
+                
+        </textarea>
+
+        <div class="footer" id="footer">
+            <div class="box">
+            <span class="value" id="words">0</span>
+            <span class="label">words</span>
+            </div>
+            <div class="box">
+            <span class="value" id="lines">0</span>
+            <span class="label">lines</span>
+            </div>
+            <div class="box">
+            <span class="value" id="characters">0</span>
+            <span class="label">characters</span>
+            </div>
+            <div class="box">
+            <button class="footerbtns" id="clear">Clear</button>
+            </div>
+            <div class="box">
+            <button class="footerbtns" id="reset">Reset</button>
+            </div>
+        </div>
+        </div>
+
+    <div class="preview-container">
+        <div class="preview" id="preview">  </div>
+        <div class="footer">
+             <button class="footerbtns" id="copy">Copy to Clipboard</button>
+        </div>
+       
+    </div>
+ 
+    <script src="index.js" type="module"></script>
+</body>
+</html>
