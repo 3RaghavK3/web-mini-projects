@@ -1,0 +1,30 @@
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('../asset/Sprinkle\ \(1\).svg');
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.splash-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    font-family: "Flavors";
+    font-weight: 400;
+    animation: reveal 1s forwards;
+}
+
+@keyframes reveal {
+    from {
+        width: 0;
+    }
+    to {
+        width: max-content;
+    }
+}
+
+
